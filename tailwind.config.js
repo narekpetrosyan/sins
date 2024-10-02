@@ -22,6 +22,9 @@ export default {
         gradient:
           "linear-gradient(90deg, #FF0000 -0.05%, #FFD600 19.97%, #00FF38 39.99%, #0029FF 60.01%, #FF00F5 80.03%, #FF0000 100.05%)",
       },
+      cursor: {
+        sins: "url('/images/sins-cursor.png'), auto",
+      },
     },
   },
   plugins: [],

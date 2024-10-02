@@ -11,6 +11,6 @@
 
 @layer base {
     body {
-        @apply bg-white font-comic-sans-ms;
+        @apply bg-white font-comic-sans-ms cursor-sins;
     }
 }
