@@ -1,8 +1,8 @@
-import { useMediaQuery } from "usehooks-ts";
-import { Layout } from "./components/Layout";
+import { useCopyToClipboard } from "usehooks-ts"
+import { Layout } from "./components/Layout"
 
 function App() {
-  const matches = useMediaQuery("(min-width: 1024px)");
+  const [value, copyFn] = useCopyToClipboard()
 
   return (
     <Layout>
@@ -19,12 +19,13 @@ function App() {
           </h3>
           <div className="w-10/12 bg-black h-[1px]"></div>
           <div className="flex items-center gap-2 lg:flex-row flex-col">
-            <p className="lg:text-2xl text-sm">
-              CA: DoxMHskldniw4820vj0uhfdTuqCjZC8oiwm7c
-            </p>
-            <button className="bg-black px-3 py-1 text-white text-base flex items-center gap-1">
+            <p className="lg:text-2xl text-sm">CA: DoxMHskldniw4820vj0uhfdTuqCjZC8oiwm7c</p>
+            <button
+              onClick={() => copyFn("DoxMHskldniw4820vj0uhfdTuqCjZC8oiwm7c")}
+              className="bg-black px-3 py-1 text-white text-base flex items-center gap-1"
+            >
               COPY
-              <img src="/images/copy.png" alt="copy" className="w-6 h-6" />
+              {!value && <img src="/images/copy.png" alt="copy" className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -55,32 +56,16 @@ function App() {
           <div className="w-full bg-black h-[1px]"></div>
           <div className="flex lg:gap-16 gap-6">
             <button className="bg-black p-4 flex items-center justify-center">
-              <img
-                src="/images/tiktok.svg"
-                alt="copy"
-                className="lg:w-8 lg:h-8 w-4 h-4"
-              />
+              <img src="/images/tiktok.svg" alt="copy" className="lg:w-8 lg:h-8 w-4 h-4" />
             </button>
             <button className="bg-black p-4 flex items-center justify-center">
-              <img
-                src="/images/x.svg"
-                alt="copy"
-                className="lg:w-8 lg:h-8 w-4 h-4"
-              />
+              <img src="/images/x.svg" alt="copy" className="lg:w-8 lg:h-8 w-4 h-4" />
             </button>
             <button className="bg-black p-4 flex items-center justify-center">
-              <img
-                src="/images/telegram.svg"
-                alt="copy"
-                className="lg:w-8 lg:h-8 w-4 h-4"
-              />
+              <img src="/images/telegram.svg" alt="copy" className="lg:w-8 lg:h-8 w-4 h-4" />
             </button>
             <button className="bg-black p-4 flex items-center justify-center">
-              <img
-                src="/images/eagle.svg"
-                alt="copy"
-                className="lg:w-8 lg:h-8 w-4 h-4"
-              />
+              <img src="/images/eagle.svg" alt="copy" className="lg:w-8 lg:h-8 w-4 h-4" />
             </button>
           </div>
         </div>
@@ -96,51 +81,34 @@ function App() {
 
           <div className="flex items-center justify-around w-full">
             <div className="flex flex-col gap-3 items-center">
-              <h3 className="lg:text-3xl font-bold text-base text-white">
-                MARKET CAP
-              </h3>
+              <h3 className="lg:text-3xl font-bold text-base text-white">MARKET CAP</h3>
               <div className="bg-white h-[2px] w-full" />
-              <p className="lg:text-3xl font-bold text-base text-[#14F500]">
-                $12,125,125
-              </p>
+              <p className="lg:text-3xl font-bold text-base text-[#14F500]">$12,125,125</p>
             </div>
 
             <div className="flex flex-col gap-3 items-center">
-              <h3 className="lg:text-3xl font-bold text-base text-white">
-                24H VOLUME
-              </h3>
+              <h3 className="lg:text-3xl font-bold text-base text-white">24H VOLUME</h3>
               <div className="bg-white h-[2px] w-full" />
-              <p className="lg:text-3xl font-bold text-base text-[#14F500]">
-                $12,125,125
-              </p>
+              <p className="lg:text-3xl font-bold text-base text-[#14F500]">$12,125,125</p>
             </div>
 
             <div className="flex flex-col gap-3 items-center">
-              <h3 className="lg:text-3xl font-bold text-base text-white">
-                HOLDERS
-              </h3>
+              <h3 className="lg:text-3xl font-bold text-base text-white">HOLDERS</h3>
               <div className="bg-white h-[2px] w-full" />
-              <p className="lg:text-3xl font-bold text-base text-[#14F500]">
-                125,125
-              </p>
+              <p className="lg:text-3xl font-bold text-base text-[#14F500]">125,125</p>
             </div>
           </div>
         </div>
 
-        <div className="lg:w-1048 lg:h-700 w-288 h-406">
-          <img
+        <div className="max-w-1048 lg:h-700 w-full h-406">
+          <iframe
             className="w-full h-full"
-            src={matches ? "/images/swap.png" : "/images/swap-mobile.png"}
-            alt="swap"
-          />
+            src="https://raydium.io/swap/?inputMint=sol&outputMint=4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R"
+          ></iframe>
         </div>
 
-        <div className="absolute lg:w-338 w-24 bottom-0 left-4">
-          <img
-            className="w-full h-full"
-            src="/images/sinsBlue.png"
-            alt="sins-blue"
-          />
+        <div className="absolute lg:w-44 w-24 bottom-0 left-4">
+          <img className="w-full h-full" src="/images/sinsBlue.png" alt="sins-blue" />
         </div>
       </div>
 
@@ -149,19 +117,18 @@ function App() {
           <div className="flex flex-col gap-4 items-center">
             <div className="flex flex-col items-center">
               <p className="text-center lg:text-base text-sm">
-                <span className="font-bold">LEGAL DISCLAIMER:</span> $SINS is a
-                crypto coin with no intrinsic value or expectation of financial
-                return.
+                <span className="font-bold">LEGAL DISCLAIMER:</span> $SINS is a crypto coin with no
+                intrinsic value or expectation of financial return.
               </p>
               <p className="text-center lg:text-base text-sm">
-                Just because some people are getting ridiculously rich buying
-                crypto doesn’t mean you definitely will.
+                Just because some people are getting ridiculously rich buying crypto doesn’t mean
+                you definitely will.
               </p>
             </div>
 
             <p className="text-center lg:text-base text-sm">
-              $SINS is to be used strictly for getting laid and for
-              entertainment AND INSPIRATION purposes only.
+              $SINS is to be used strictly for getting laid and for entertainment AND INSPIRATION
+              purposes only.
             </p>
           </div>
 
@@ -169,7 +136,7 @@ function App() {
         </div>
       </div>
     </Layout>
-  );
+  )
 }
 
-export default App;
+export default App
